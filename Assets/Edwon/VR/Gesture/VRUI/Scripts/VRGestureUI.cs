@@ -19,6 +19,8 @@ namespace Edwon.VR.Gesture
 
         bool uiVisible;
 
+        public bool moveUI = false;
+
         [HideInInspector]
         public Handedness menuHandedness;
         VRGestureUIPanelManager panelManager;
@@ -129,9 +131,18 @@ namespace Edwon.VR.Gesture
                 ToggleVRGestureUI();
 
             Vector3 handToCamVector = vrCam.position - vrMenuHand.position;
-            vrHandUIPanel.position = vrMenuHand.position + (offsetZ * handToCamVector);
-            if (-handToCamVector != Vector3.zero)
-                vrHandUIPanel.rotation = Quaternion.LookRotation(-handToCamVector, Vector3.up);
+
+            if (moveUI == true)
+            {
+                vrHandUIPanel.position = vrMenuHand.position + (offsetZ * handToCamVector);
+                if (-handToCamVector != Vector3.zero)
+                    vrHandUIPanel.rotation = Quaternion.LookRotation(-handToCamVector, Vector3.up);
+            }
+            else
+            {
+                vrHandUIPanel.localPosition = new Vector3(0,0,0);
+
+            }
 
             if (rig.uiState == VRGestureUIState.Detecting)
                 UpdateConfidenceThresholdUI();

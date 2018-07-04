@@ -93,7 +93,6 @@ namespace Edwon.VR.Gesture
             {
                 //myTrail.AssignHand(this);
             }
-            
         }
 
         public void LineCaught(List<Vector3> capturedLine)
@@ -148,14 +147,14 @@ namespace Edwon.VR.Gesture
             if (!input.GetButton(rig.gestureButton))
             {
                 state = VRGestureCaptureState.ReadyToCapture;
-                if (input.GetButtonUp(rig.gestureButton))
+                if (input.GetButtonUp(rig.gestureButton) || UnityEngine.Input.GetKeyUp(KeyCode.D))
                 {
                     StopRecording();
                 }
             }
 
             // if pressed button start recording
-            if (input.GetButtonDown(rig.gestureButton) && state == VRGestureCaptureState.ReadyToCapture)
+            if ((input.GetButtonDown(rig.gestureButton) && state == VRGestureCaptureState.ReadyToCapture) || (UnityEngine.Input.GetKey(KeyCode.D) && state == VRGestureCaptureState.ReadyToCapture))
             {
                 state = VRGestureCaptureState.Capturing;
                 StartRecording();
@@ -184,6 +183,7 @@ namespace Edwon.VR.Gesture
             Vector3 rightHandPoint = playerHand.position;
             Vector3 localizedPoint = getLocalizedPoint(rightHandPoint);
             currentCapturedLine.Add(localizedPoint);
+            Debug.Log(localizedPoint);
             if (ContinueCaptureEvent != null)
                 ContinueCaptureEvent(rightHandPoint);
         }

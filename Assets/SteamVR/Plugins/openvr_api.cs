@@ -3535,7 +3535,8 @@ public enum EVREventType
 	VREvent_DualAnalog_Cancel = 257,
 	VREvent_MouseMove = 300,
 	VREvent_MouseButtonDown = 301,
-	VREvent_MouseButtonUp = 302,
+	VREvent_Mouse
+            = 302,
 	VREvent_FocusEnter = 303,
 	VREvent_FocusLeave = 304,
 	VREvent_Scroll = 305,

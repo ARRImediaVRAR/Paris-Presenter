@@ -107,6 +107,8 @@ namespace Edwon.VR.Gesture
                             lastRightDetected = DateTime.Now;
 
                         }
+                        Debug.Log("Left detected " + lastLeftGesture);
+                        Debug.Log("Right detected " + lastRightGesture);
 
                         if (CheckForSync(gesture))
                         {

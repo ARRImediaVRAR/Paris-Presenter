@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,6 @@ namespace Edwon.VR
 
     public class LaserPointerInputModule : BaseInputModule
     {
-
         public static LaserPointerInputModule instance { get { return Instance; } }
         private static LaserPointerInputModule Instance = null;
                 
@@ -99,6 +99,8 @@ namespace Edwon.VR
         // get if the ILaserPointer (controller) pressing on some GameObject
         public ILaserPointer IsLaserPointerPressingAt(GameObject go)
         {
+            Debug.Log("Laset pointer pressing at : " + go);
+
             for (int i = _controllerData.Count-1; i > 0; i--)
             {
                 ILaserPointer laserPointer = _controllerData.ElementAt(i).Key;
@@ -107,6 +109,7 @@ namespace Edwon.VR
                 {
                     return laserPointer;
                 }
+                Debug.Log(go);
             }
             return null;
         }
@@ -114,12 +117,15 @@ namespace Edwon.VR
         // get if the ILaserPointer (controller) pointing at some GameObject
         public ILaserPointer IsLaserPointerPointingAt(GameObject go)
         {
+            Debug.Log("Laset pointer pointing at : " + go);
+
             for (int i = _controllerData.Count-1; i > 0; i--)
             {
                 ILaserPointer laserPointer = _controllerData.ElementAt(i).Key;
                 ControllerData data = _controllerData.ElementAt(i).Value;
                 if (data.currentPoint == go)
                 {
+
                     return laserPointer;
                 }
             }
@@ -202,6 +208,7 @@ namespace Edwon.VR
                 //if(pointerEvent.pointerCurrentRaycast.gameObject == null)
                 //return;
 
+
                 // Send control enter and exit events to our controller
                 var hitControl = data.pointerEvent.pointerCurrentRaycast.gameObject;
 
@@ -223,13 +230,26 @@ namespace Edwon.VR
                 base.HandlePointerExitAndEnter(data.pointerEvent, data.currentPoint);
 
                 // button down begin
-                if ( controller.ButtonDown() )
+                if ( controller.ButtonDown() || UnityEngine.Input.GetKeyDown(KeyCode.D))
                 {
-
                     ClearSelection();
 
                     data.pointerEvent.pressPosition = data.pointerEvent.position;
-                    data.pointerEvent.pointerPressRaycast = data.pointerEvent.pointerCurrentRaycast;
+                    eventSystem.RaycastAll(data.pointerEvent, m_RaycastResultCache);
+                    data.pointerEvent.pointerPressRaycast = FindFirstRaycast(m_RaycastResultCache);
+                    data.pointerEvent.pointerPress = null;
+                    /*
+                    Ray mouseRay = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+                    Debug.DrawRay(mouseRay.origin, mouseRay.direction * 10, Color.green, 50);
+                    RaycastHit hit;
+                    if (Physics.Raycast(mouseRay, out hit))
+                    {
+                        Debug.Log("Object hit: " + hit.transform.gameObject.name);
+                    }
+                    */
+                    data.pointerEvent.pressPosition = UnityEngine.Input.mousePosition;
+                    eventSystem.RaycastAll(data.pointerEvent, m_RaycastResultCache);
+                    data.pointerEvent.pointerPressRaycast = FindFirstRaycast(m_RaycastResultCache);
                     data.pointerEvent.pointerPress = null;
 
                     // update current pressed if the curser is over an element
@@ -266,7 +286,7 @@ namespace Edwon.VR
                 // button down end
 
                 // button up begin
-                if( controller.ButtonUp() )
+                if( controller.ButtonUp() || UnityEngine.Input.GetKeyUp(KeyCode.D))
                 {
                     if(data.currentDragging != null) {
                         ExecuteEvents.Execute(data.currentDragging, data.pointerEvent, ExecuteEvents.endDragHandler);

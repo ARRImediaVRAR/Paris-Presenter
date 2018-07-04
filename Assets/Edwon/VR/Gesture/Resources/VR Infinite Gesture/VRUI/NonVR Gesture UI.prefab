@@ -700,8 +700,9 @@ GameObject:
   - component: {fileID: 11457612}
   - component: {fileID: 114000010850691102}
   - component: {fileID: 11451650}
+  - component: {fileID: 222563447641604546}
   m_Layer: 5
-  m_Name: VR Gesture UI
+  m_Name: NonVR Gesture UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2322,7 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonListAnimationDelay: 0.1
-  moveUI: 1
+  moveUI: 0
   menuHandedness: 0
   vrGestureGallery: {fileID: 114000013880149198}
   offsetZ: 0.2
@@ -3595,7 +3596,7 @@ Canvas:
   m_GameObject: {fileID: 163298}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4364,8 +4365,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4449,8 +4450,8 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119964}
-  m_LocalRotation: {x: 0.099817015, y: 0.62906265, z: -0.08191342, w: 0.76655525}
-  m_LocalPosition: {x: 0, y: 0, z: 616.6027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22431822}
@@ -4467,7 +4468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -513.0804, y: -1067.841}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22467226
@@ -12251,6 +12252,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012976693934}
+--- !u!222 &222563447641604546
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163298}
 --- !u!224 &224000010018648106
 RectTransform:
   m_ObjectHideFlags: 1

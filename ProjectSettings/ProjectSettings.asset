@@ -605,7 +605,8 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
   webGLLinkerTarget: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: EDWON_VR_STEAM
   platformArchitecture: {}
   scriptingBackend:
     Standalone: 0
@@ -699,7 +700,7 @@ PlayerSettings:
     Purchasing: 0
     UNet: 0
     Unity_Ads: 0
-  facebookSdkVersion: 
+  facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: e5b8bb6c-4c7a-46ba-a4ce-aadcca551b35
   projectName: Paris Presenter

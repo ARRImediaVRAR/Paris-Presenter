@@ -202,13 +202,14 @@ namespace Edwon.VR
             {
                 uiState = VRGestureUIState.Detecting;
             }
+            Debug.Log(uiState);
         }
 
         void StopCapturing()
         {
             if (leftCapture.state == VRGestureCaptureState.Capturing || rightCapture.state == VRGestureCaptureState.Capturing)
             {
-                //do nothing
+                //do nothingxsx
             }
             else
             {
@@ -222,6 +223,8 @@ namespace Edwon.VR
                     uiState = VRGestureUIState.ReadyToDetect;
                 }
             }
+            Debug.Log(uiState);
+
         }
 
         #endregion
@@ -352,7 +355,9 @@ namespace Edwon.VR
 
         public void CreateVRUI()
         {
+            //Instantiate(Resources.Load(Config.PARENT_PATH + "VRUI/NonVR Gesture UI"));
             Instantiate(Resources.Load(Config.PARENT_PATH + "VRUI/VR Gesture UI"));
+
         }
 
         public void SpawnControllerModels ()
