@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MovementRecorder : MonoBehaviour
 {
 
@@ -55,6 +54,8 @@ public class MovementRecorder : MonoBehaviour
         //m_positionData.Add(m_objectToRecord.position);
         //m_rotationData.Add(m_objectToRecord.rotation);
         m_posRelativeToTransform.Add(getLocalizedPoint(m_objectToRecord.position));
+        Debug.Log(getLocalizedPoint(m_objectToRecord.position));
+
     }
 
     //This will get points in relation to a users head.

@@ -1,22 +1,66 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Edwon.VR;
+using Edwon.VR.Gesture;
 public class DataHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public GestureRecognizer m_currentRecognizer;
+    public Trainer m_currentTrainer;
+
+
+    VRGestureSettings gestureSettings;
+    VRGestureSettings GestureSettings
+    {
+        get
+        {
+            if (gestureSettings == null)
+            {
+                gestureSettings = Utils.GetGestureSettings();
+            }
+            return gestureSettings;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
+        gestureSettings = Utils.GetGestureSettings();
+
+        Debug.Log("Current neural network: " + GestureSettings.currentNeuralNet);
+
+        if (gestureSettings == null)
+        {
+            Debug.LogError("Gesture settings null");
+        }
+
+        Debug.Log("Number of gestures in the bank : " + gestureSettings.gestureBank.Count);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
     public void HandleRecordedData(List<Vector3> recordedData)
     {
-        Debug.Log("Number of position data : " + recordedData.Count);
-    }
+        string newGestureName = "CustomGesture " + (gestureSettings.gestureBank.Count + 1);
 
+        gestureSettings.CreateGesture(newGestureName, false);
+
+        //  gestureSettings.CreateNewNeuralNet(newNeuralNetworkName + gestureSettings.gestureBank.Count);
+
+        m_currentTrainer = new Trainer(gestureSettings.currentNeuralNet, GestureSettings.gestureBank);
+        m_currentTrainer.CurrentGesture = GestureSettings.FindGesture(newGestureName);
+
+        //m_currentTrainer.TrainRecognizer();
+
+        Debug.Log("Recorded data length : " + recordedData.Count);
+        //Training
+        m_currentTrainer.TrainLine(recordedData, Handedness.Right);
+
+        //Recognizing
+        //currentRecognizer.RecognizeLine(capturedLine, hand, this);
+
+    }
 }

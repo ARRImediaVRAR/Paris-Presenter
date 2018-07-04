@@ -98,11 +98,16 @@ namespace Edwon.VR.Gesture
         [ExecuteInEditMode]
         public void BeginTraining(Action<string> callback)
         {
-            Rig.uiState = VRGestureUIState.Training;
+            //    Rig.uiState = VRGestureUIState.Training;
+            Debug.Log(currentNeuralNet);
+
+            gestureBank = Utils.GetGestureBank(currentNeuralNet);
+            Debug.Log(gestureBank);
+
             Rig.currentTrainer = new Trainer(currentNeuralNet, gestureBank);
             Rig.currentTrainer.TrainRecognizer();
             // finish training
-            Rig.uiState = VRGestureUIState.Idle;
+        //    Rig.uiState = VRGestureUIState.Idle;
             callback(currentNeuralNet);
         }
 
@@ -236,6 +241,7 @@ namespace Edwon.VR.Gesture
             Utils.CreateGestureFile(gestureName, currentNeuralNet);
             Utils.SaveGestureBank(gestureBank, currentNeuralNet);
             gestureBankPreEdit = gestureBank.ConvertAll(gesture => gesture.Clone());
+            Debug.Log("Gesture created");
         }
 
         public void CreateSingleGesture(string gestureName, Handedness hand, bool isSynchronous)
