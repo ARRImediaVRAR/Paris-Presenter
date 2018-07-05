@@ -53,11 +53,10 @@ public class DataHandler : MonoBehaviour {
         m_currentTrainer = new Trainer(gestureSettings.currentNeuralNet, GestureSettings.gestureBank);
         m_currentTrainer.CurrentGesture = GestureSettings.FindGesture(newGestureName);
 
-        //m_currentTrainer.TrainRecognizer();
+        m_currentTrainer.TrainLine(recordedData, Handedness.Right);
+        m_currentTrainer.TrainRecognizer();
 
         Debug.Log("Recorded data length : " + recordedData.Count);
-        //Training
-        m_currentTrainer.TrainLine(recordedData, Handedness.Right);
 
         //Recognizing
         //currentRecognizer.RecognizeLine(capturedLine, hand, this);

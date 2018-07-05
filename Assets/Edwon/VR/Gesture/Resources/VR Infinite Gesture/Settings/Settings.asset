@@ -24,16 +24,22 @@ MonoBehaviour:
   lastNeuralNet: Custom Neural Net1
   neuralNets:
   - Custom Neural Net1
-  - Neural Net 1
   - Neural Net 2
-  - Test Neural Net11
   gestureBank:
   - name: CustomGesture 1
     hand: 1
     isSynchronous: 0
     exampleCount: 0
+  - name: CustomGesture 2
+    hand: 1
+    isSynchronous: 0
+    exampleCount: 1
   gestureBankPreEdit:
   - name: CustomGesture 1
+    hand: 1
+    isSynchronous: 0
+    exampleCount: 0
+  - name: CustomGesture 2
     hand: 1
     isSynchronous: 0
     exampleCount: 0
