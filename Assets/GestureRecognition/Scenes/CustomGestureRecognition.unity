@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a844c9718aba34db92c52fc95d3ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gestureName: Test Gesture
 --- !u!4 &214861790
 Transform:
   m_ObjectHideFlags: 0
@@ -537,6 +538,47 @@ MonoBehaviour:
   m_relativeTargetTransform: {fileID: 1032849370}
   m_tempRelativeToTransform: {fileID: 1032849370}
   m_dataHandler: {fileID: 214861789}
+--- !u!1 &1025096495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1025096497}
+  - component: {fileID: 1025096496}
+  m_Layer: 0
+  m_Name: FPSCapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1025096496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025096495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1ef9ae0d572cc4ba09fc9ebffa445a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetFPS: 30
+--- !u!4 &1025096497
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025096495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4149078, y: 1.5695102, z: -1.2749162}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1032849369
 GameObject:
   m_ObjectHideFlags: 0

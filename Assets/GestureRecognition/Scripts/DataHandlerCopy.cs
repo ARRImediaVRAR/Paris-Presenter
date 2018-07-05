@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Edwon.VR;
 using Edwon.VR.Gesture;
-public class DataHandler : MonoBehaviour {
+public class DataHandlerCopy : MonoBehaviour {
 
     public GestureRecognizer m_currentRecognizer;
     public Trainer m_currentTrainer;
@@ -60,6 +60,11 @@ public class DataHandler : MonoBehaviour {
 
         //Recognizing
         //currentRecognizer.RecognizeLine(capturedLine, hand, this);
+
+    }
+
+    void CreateFile()
+    {
 
     }
 }
